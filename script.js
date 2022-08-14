@@ -1,8 +1,13 @@
-const start = (() =>{
-    function append() {
-        cliWrapper = document.getElementById("cliWrapper");
-        console.log(cliWrapper);
+const start = (() => {
+    function appendLine() {
+        let cliWrapper = document.getElementById("cliWrapper");
+        let prefix = document.createElement("span");
+        let userInput = document.createElement("INPUT");
+        userInput.attributes = "rows=1";
+        prefix.textContent = "DWB:/";
+        cliWrapper.appendChild(prefix);
+        cliWrapper.appendChild(userInput);
     }
-    append();
+    appendLine();
+    document.addEventListener("Enter", appendLine);
 })();
-document.get
