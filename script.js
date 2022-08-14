@@ -1,5 +1,5 @@
 const start = (() => {
-    function appendLine() {
+    function appendInputLine() {
         let cliWrapper = document.getElementById("cliWrapper");
         let prefix = document.createElement("span");
         let userInput = document.createElement("INPUT");
@@ -7,7 +7,10 @@ const start = (() => {
         prefix.textContent = "DWB:/";
         cliWrapper.appendChild(prefix);
         cliWrapper.appendChild(userInput);
+        let lastChild = cliWrapper.lastChild;
+        lastChild.focus();
+        lastChild.select();
     }
-    appendLine();
-    document.addEventListener("Enter", appendLine);
+    appendInputLine();
+    document.addEventListener("Enter", appendInputLine);
 })();
