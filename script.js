@@ -14,7 +14,9 @@ const start = (() => {
         }
         M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
         if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
-        return M.join(' ');
+        p = document.createElement("p");
+        p.textContent = "Running on " + M.join(' ');
+        document.getElementById("header").appendChild(p);
     })();
 
     function appendInputLine() {
@@ -44,7 +46,28 @@ const start = (() => {
             case "help":
                 div.textContent = "help         - list of commands\r\ncontact      - opens deafault mail programm\r\nprj          - list of projects\r\nop <value>   - opens selected project in new tab\r\nhub          - opens GitHub profile in a new Tab\r\nbrd          - if you are bored\r\nclear        - reset cli\r\nexit         - close tab";
                 break;
-
+            case "contact":
+                div.textContent = "Opening default Mail Program!"
+                window.location.href = "mailto:jobs@kevinkinner.de?subject=First Contact&body= Hello Mr.Kinner";
+                break;
+            case "prj":
+                div.textContent = "op to open a project of your choice type op name of project\r\n\r\ncalc     - Browserbased Calculator\r\nrps      - Rock Paper Scissor\r\nssm      - speaker registration form\r\nmg       - login form\r\nlb       - personal library\r\neas      - Etch a Sketch"
+                break;
+            case "op":
+                projectOpener();
+                break;
+            case "hub":
+                window.open("https://github.com/Doubl3K", "_blank").focus();
+                break;
+            case "brd":
+                brd();
+                break;
+            case "clear":
+                window.location.reload();
+                break;
+            case "exit":
+                window.close();
+                break;
             default:
                 div.textContent = lastChild + " is not a recognized command"
                 break;
@@ -59,9 +82,7 @@ const start = (() => {
 
 
 
-    p = document.createElement("p");
-    p.textContent = "Running on " + navigator.sayswho;
-    document.getElementById("header").appendChild(p);
+
 
     appendInputLine();
 })();
