@@ -4,10 +4,6 @@ body {
     font-family: 'VT323', monospace;
 }
 
-p {
-    position: absolute;
-}
-
 textarea {
     background-color: black;
     color: green;
@@ -34,4 +30,8 @@ input {
     font-size: 1rem;
     width: 90vw;
     align-self: center;
+}
+
+div {
+    margin-bottom: 20px;
 }
