@@ -1,0 +1,15 @@
+body{
+    background-color: black;
+    color: rgb(44, 255, 44);
+}
+
+p{
+    position: absolute;
+}
+
+textarea{
+    background-color: black;
+    color: green;
+    border: none;
+    resize: none;
+}
