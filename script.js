@@ -1,7 +1,7 @@
 const start = (() => {
-    let cliWrapper = document.getElementById("cliWrapper");
 
     function appendInputLine() {
+        let cliWrapper = document.getElementById("cliWrapper");
         let prefix = document.createElement("span");
         let userInput = document.createElement("INPUT");
         prefix.textContent = "DWB:/";
@@ -21,9 +21,11 @@ const start = (() => {
     }
 
     function help() {
-        p = document.createElement("p");
-        p.textContent = "contact - list possible contact"
-        cliWrapper.appendChild(p);
+        let cliWrapper = document.getElementById("cliWrapper");
+        div = document.createElement("div");
+        div.textContent = "contact - list possible contact"
+        cliWrapper.appendChild(div);
+        appendInputLine();
     }
 
 
