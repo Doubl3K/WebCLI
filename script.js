@@ -42,41 +42,72 @@ const start = (() => {
         let cliWrapper = document.getElementById("cliWrapper");
         div = document.createElement("div");
         div.setAttribute("style", "white-space:pre;");
-        switch (lastChild) {
-            case "help":
-                div.textContent = "help         - list of commands\r\ncontact      - opens deafault mail programm\r\nprj          - list of projects\r\nop <value>   - opens selected project in new tab\r\nhub          - opens GitHub profile in a new Tab\r\nbrd          - if you are bored\r\nclear        - reset cli\r\nexit         - close tab";
-                break;
-            case "contact":
-                div.textContent = "Opening default Mail Program!"
-                window.location.href = "mailto:jobs@kevinkinner.de?subject=First Contact&body= Hello Mr.Kinner";
-                break;
-            case "prj":
-                div.textContent = "op to open a project of your choice type op name of project\r\n\r\ncalc     - Browserbased Calculator\r\nrps      - Rock Paper Scissor\r\nssm      - speaker registration form\r\nmg       - login form\r\nlb       - personal library\r\neas      - Etch a Sketch"
-                break;
-            case "op":
-                projectOpener();
-                break;
-            case "hub":
-                window.open("https://github.com/Doubl3K", "_blank").focus();
-                break;
-            case "brd":
-                brd();
-                break;
-            case "clear":
-                window.location.reload();
-                break;
-            case "exit":
-                window.close();
-                break;
-            default:
-                div.textContent = lastChild + " is not a recognized command"
-                break;
+        if (lastChild.substr(0, 2) == "op") {
+            if (lastChild.length < 3) {
+                div.textContent = "op command can only be use with project name variable"
+            } else {
+                projectOpener(lastChild);
+            }
+        } else {
+            switch (lastChild) {
+                case "help":
+                    div.textContent = "help         - list of commands\r\ncontact      - opens deafault mail programm\r\nprj          - list of projects\r\nop <value>   - opens selected project in new tab\r\nhub          - opens GitHub profile in a new Tab\r\nbrd          - if you are bored\r\nclear        - reset cli\r\nexit         - close tab";
+                    break;
+                case "contact":
+                    div.textContent = "Opening default Mail Program!"
+                    window.location.href = "mailto:jobs@kevinkinner.de?subject=First Contact&body= Hello Mr.Kinner";
+                    break;
+                case "prj":
+                    div.textContent = "op to open a project of your choice type op name of project\r\n\r\ncalc     - Browserbased Calculator\r\nrps      - Rock Paper Scissor\r\nssm      - speaker registration form\r\nmg       - login form\r\nlb       - personal library\r\neas      - Etch a Sketch"
+                    break;
+                case "hub":
+                    window.open("https://github.com/Doubl3K", "_blank").focus();
+                    break;
+                case "brd":
+                    window.open("https://www.youtube.com/watch?v=DEqXNfs_HhY", "_blank");
+                    break;
+                case "clear":
+                    window.location.reload();
+                    break;
+                case "exit":
+                    window.close();
+                    break;
+                default:
+                    div.textContent = lastChild + " is not a recognized command"
+                    break;
+            }
         }
+
         cliWrapper.appendChild(div);
 
-
-
-
+        function projectOpener(lastChild) {
+            let prid = lastChild.substr(3, 10);
+            switch (prid) {
+                case "calc":
+                    window.open("https://doubl3k.github.io/calc/", "_blank").focus();
+                    break;
+                case "rps":
+                    window.open("https://doubl3k.github.io/R-P-S/", "_blank").focus();
+                    break;
+                case "ssm":
+                    window.open("https://doubl3k.github.io/SSM-SpeakerSubmision/", "_blank").focus();
+                    break;
+                case "mg":
+                    window.open("https://doubl3k.github.io/MonkeyGaming/", "_blank").focus();
+                    break;
+                case "lb":
+                    window.open("https://doubl3k.github.io/Library/", "_blank").focus();
+                    break;
+                case "eas":
+                    window.open("https://doubl3k.github.io/EtchASketch/", "_blank").focus();
+                    break;
+                default:
+                    let cliWrapper = document.getElementById("cliWrapper");
+                    div = document.createElement("div");
+                    div.textContent = prid + " is not a recognized project variable";
+                    break;
+            }
+        }
         appendInputLine();
     }
 
