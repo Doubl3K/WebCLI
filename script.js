@@ -21,14 +21,30 @@ const start = (() => {
 
     //decleration outside of function to not reset on call
     let commandCounter = 0;
+    let getCounter = 0;
     let arr = [];
     function saveCommand(lastChild){
         arr[commandCounter] = lastChild;
         console.log(arr[commandCounter]);
+        getCounter = commandCounter;
         commandCounter++;
     }
-    function getCommand(arrLength){
-        console.log(arr.length);
+    
+    function getCommandUp(){
+        if (arr[getCounter] == undefined) {
+            //do nothing
+        }
+        else{
+        console.log(arr[getCounter]);
+        getCounter--;
+        }
+    }
+
+    function getCommandDown(){
+        if (getCounter < arr.length -1) {
+            getCounter++;
+            console.log(arr[getCounter]);
+        }
     }
 
 
@@ -49,7 +65,10 @@ const start = (() => {
                 saveCommand(lastChild.value);
             }
             if (key === "ArrowUp") {
-                getCommand();
+                getCommandUp();
+            }
+            if (key === "ArrowDown") {
+                getCommandDown();
             }
         })
     }
