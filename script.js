@@ -35,7 +35,8 @@ const start = (() => {
             //do nothing
         }
         else{
-        console.log(arr[getCounter]);
+        let cliWrapper = document.getElementById("cliWrapper");
+        cliWrapper.lastChild.value = arr[getCounter];
         getCounter--;
         }
     }
@@ -43,7 +44,8 @@ const start = (() => {
     function getCommandDown(){
         if (getCounter < arr.length -1) {
             getCounter++;
-            console.log(arr[getCounter]);
+            cliWrapper.lastChild.value = arr[getCounter];
+
         }
     }
 
